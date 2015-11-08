@@ -9,11 +9,13 @@ mv ./itmo-544-444-fall2015/images /var/www/html/images
 mv ./itmo-544-444-fall2015/index.html /var/www/html
 mv ./itmo-544-444-fall2015/*.php /var/www/html
 
-curl -sS https://getcomposer.org/installer | php
+curl -sS https://getcomposer.org/installer | sudo php &> /tmp/getcomposer.txt
 
-php composer.phar require aws/aws-sdk-php
+sudo php composer.phar require aws/aws-sdk-php &> /tmp/runcomposer.txt
 
-mv vendor /var/www/html
+sudo mv vendor /var/www/html &> /tmp/movevendor.txt
+
+sudo php /var/www/html/setup.php &> /tmp/database-setup.txt
 
 echo "Hello!" > /tmp/hello.txt
 
